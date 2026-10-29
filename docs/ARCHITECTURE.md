@@ -16,7 +16,9 @@ A bundled JSON/YAML OpenAPI document is compiled to an operation manifest. The c
 
 ## Runtime
 
-Only explicitly configured manifests are loaded. Tool discovery is paged. Validators compile lazily for the selected operation. The model cannot change configuration, choose a URL, supply authorization headers, access environment variables, or import new specs through the MCP interface. A direct per-operation tool registration mode is not implemented.
+Only explicitly configured manifests are loaded. Tool discovery is paged. Validators compile lazily for the selected operation. Explicit local stdio upstreams can also be spawned and queried through an exact per-server tool allowlist. They are independent child programs, not subject to the HTTP egress gate. No upstream is enabled by default.
+
+The model cannot change configuration, choose a URL, supply authorization headers, access environment variables, or import new specs through the MCP interface. A direct per-operation tool registration mode is not implemented.
 
 The engine maps schema-validated arguments into HTTP requests, injects credentials from the process environment, checks the configured mutation allowlist, and returns a bounded response. No background jobs, outbound telemetry, cloud accounts or shared auth service are part of this code.
 

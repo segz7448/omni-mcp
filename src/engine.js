@@ -12,17 +12,17 @@ function envValue(name) {
   return value;
 }
 export class Engine {
-  constructor(platforms) {
-    this.platforms = platforms;
+  constructor(platforms, upstreams = []) {
+    this.platforms = [...platforms, ...upstreams.map(u=>({compiled:{id:u.id,title:u.id,tools:u.tools,skipped:[]},upstream:u}))];
     this.tools = new Map(); this.validators = new Map();
-    for (const p of platforms) {
+    for (const p of this.platforms) {
       for (const t of p.compiled.tools) {
         if (this.tools.has(t.name)) throw new Error('Duplicate tool name');
         this.tools.set(t.name, {t, p});
       }
     }
   }
-  enabled(t, p) { return ['GET', 'HEAD'].includes(t.method) || (p.allowWriteOperations || []).includes(t.name); }
+  enabled(t, p) { return !!p.upstream || ['GET', 'HEAD'].includes(t.method) || (p.allowWriteOperations || []).includes(t.name); }
   list(query = '', platform, offset = 0, limit = 30) {
     const all = [...this.tools.values()].filter(({t,p}) => this.enabled(t,p) && (!platform || t.platform === platform) && `${t.name} ${t.description} ${t.path}`.toLowerCase().includes(query.toLowerCase()));
     return {total: all.length, offset, tools: all.slice(offset, offset + limit).map(({t}) => ({name:t.name, platform:t.platform, description:t.description, method:t.method, path:t.path}))};
@@ -38,6 +38,10 @@ export class Engine {
     const {t,p} = x;
     if (!this.validators.has(name)) this.validators.set(name, ajv.compile(t.inputSchema));
     if (!this.validators.get(name)(args)) throw new Error('Arguments do not match the operation input schema');
+    if (p.upstream) {
+      const result = await p.upstream.client.callTool({name:t.upstreamTool,arguments:args});
+      return {ok:result.isError !== true,data:result};
+    }
     const headers = {Accept: 'application/json', 'User-Agent': 'omni-mcp/0.1.0'};
     const secrets = [];
     let path = t.path;

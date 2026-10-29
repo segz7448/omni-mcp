@@ -2,9 +2,33 @@
 
 A local-first OpenAPI-to-MCP gateway. One local process, your API credentials, no hosted control plane.
 
-**Early development, not 1,000 verified integrations.** The first batch generates operation schemas from eight public specs: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify and Zoom. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested.
+**Early development, not 1,000 verified integrations.** The first batch generates operation schemas from eight public specs: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify and Zoom. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. One unauthenticated GitHub public-repository read returned HTTP 200 through the actual engine; see [smoke-test evidence](docs/live-smoke.json).
 
 The long-term goal is broad platform coverage without writing each connector by hand. APIs.guru's catalog returned 2,529 API entries when checked on October 29, 2026. Those are API definitions, not necessarily distinct companies, compatible APIs, or working integrations. No claim of 5,000 supported platforms is made.
+
+## Categories and the free-only boundary
+
+The source catalog is categorized. Snapshot counts (entries can have several labels):
+
+| Category | API entries, pricing unverified |
+|---|---:|
+| Cloud | 955 |
+| Media | 340 |
+| Open data | 318 |
+| Analytics | 284 |
+| Developer tools | 168 |
+| Financial, including banking candidates | 72 |
+| Messaging | 62 |
+| Collaboration | 38 |
+| Payment | 32 |
+| Social | 18 |
+| IoT | 18 |
+
+A bundled `catalog/candidates.json` snapshot provides all 2,529 categorized discovery candidates, with `pricingStatus: unverified` and `enabledByDefault: false` on every entry. It is metadata only, not activated connectors.
+
+Full source counts: [catalog report](docs/catalog-report.json). These are **not free verified integration counts**. No pricing audit has been completed. Default configuration (`omni.config.default.json`) is empty: it activates zero providers and zero device connectors. The eight spec-generation presets are opt-in compatibility samples, not a free-services recommendation. A free adapter cannot remove bank/payment charges or commercial API costs.
+
+There are two connector classes in one gateway: generated HTTP operations and explicitly allowlisted local stdio MCP servers. [Local connector guide](docs/LOCAL-SERVERS.md) explains the security boundary. Two open-source candidates (Playwright/browser and filesystem) are listed in `local-servers.json`, disabled and untested. **No phone connector is implemented.** This does not yet fulfill the goal of thousands of verified free integrations; that requires continuing provider-by-provider checks.
 
 ## Run from source
 
@@ -98,7 +122,7 @@ npm test              # additionally validates every generated operation schema
 npm audit
 ```
 
-Tests include an actual spawned stdio MCP server/client session, tool discovery, schema inspection, a call through the gateway to a real local HTTP fixture, auth injection/redaction, path/query encoding, JSON/form bodies, blocked mutations, network policy and redirect handling. **The HTTP fixture is not a live vendor integration.** Generated schema tests skip when generated files are absent.
+Tests include an actual spawned stdio MCP server/client session, tool discovery, schema inspection, a call through the gateway to a real local HTTP fixture, auth injection/redaction, a real allowlisted local upstream stdio process, path/query encoding, JSON/form bodies, blocked mutations, network policy and redirect handling. **The HTTP fixture is not a live vendor integration. A separate live smoke test covers one unauthenticated GitHub read only.** Generated schema tests skip when generated files are absent.
 
 Generation counts, source URLs, source hashes, skipped counts and authenticated-test status are recorded in [generated/report.json](generated/report.json). Vendor-generated files are deliberately not committed or packaged. Run the generator to produce them locally, under the original sources' terms. Read the [architecture](docs/ARCHITECTURE.md), [compatibility notes](docs/COMPATIBILITY.md), [security notes](SECURITY.md), and [source notes](docs/SOURCES.md).
 

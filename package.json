@@ -15,14 +15,19 @@
     "presets.json",
     "README.md",
     "LICENSE",
-    "docs"
+    "docs",
+    "omni.config.default.json",
+    "omni.config.example.json",
+    "local-servers.json",
+    "catalog"
   ],
   "scripts": {
     "test": "node --test test/*.test.js",
     "check": "node --check src/cli.js && node --check src/compiler.js && node --check src/engine.js",
     "generate": "node scripts/generate-batch.js",
     "start": "node src/cli.js serve --config omni.config.json",
-    "catalog": "node src/cli.js catalog-sync"
+    "catalog": "node src/cli.js catalog-sync",
+    "catalog:report": "node scripts/catalog-report.js"
   },
   "dependencies": {
     "@modelcontextprotocol/client": "2.4.0",

@@ -1,0 +1,25 @@
+{
+  "note": "Curated opt-in candidates only. No automatic install or execution. Free source code does not guarantee free downstream service use. Pin and review a release before use.",
+  "entries": [
+    {
+      "id": "playwright",
+      "category": "pc_browser",
+      "source": "https://github.com/microsoft/playwright-mcp",
+      "commandTemplate": {"command": "npx", "args": ["@playwright/mcp@REVIEWED_VERSION"]},
+      "adapterPricing": "open_source",
+      "liveTested": false,
+      "enabledByDefault": false,
+      "warning": "Runs a browser on the device where installed. Does not grant remote PC or phone access."
+    },
+    {
+      "id": "filesystem",
+      "category": "pc_files",
+      "source": "https://github.com/modelcontextprotocol/servers",
+      "commandTemplate": {"command": "npx", "args": ["@modelcontextprotocol/server-filesystem@REVIEWED_VERSION", "/EXPLICIT/ALLOWED/DIRECTORY"]},
+      "adapterPricing": "open_source",
+      "liveTested": false,
+      "enabledByDefault": false,
+      "warning": "Only configure explicit non-sensitive directories and an exact read-tool allowlist."
+    }
+  ]
+}

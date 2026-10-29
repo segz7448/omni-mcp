@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-10-29T13:34:24.021Z",
+  "provider": "github",
+  "operation": "github__repos_get",
+  "request": "GET https://api.github.com/repos/octocat/Hello-World",
+  "authenticated": false,
+  "status": 200,
+  "resultUrl": "https://github.com/octocat/Hello-World",
+  "scope": "One public read endpoint only; not comprehensive provider verification."
+}
