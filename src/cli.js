@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {parse} from 'yaml';
 import {compileSpec, packCompiled, unpackCompiled} from './compiler.js';
 import {Engine} from './engine.js';
@@ -25,7 +26,8 @@ try {
       console.error(JSON.stringify({id:c.id,generated:c.tools.length,skipped:c.skipped.length,conversion,out}));break;
     }
     case 'serve': {
-      const file = path.resolve(option('config','omni.config.json'));
+      const defaultConfig = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'omni.config.default.json');
+      const file = option('config') ? path.resolve(option('config')) : defaultConfig;
       const config=JSON.parse(await fs.readFile(file,'utf8'));
       const platforms=[];
       for(const p of config.platforms || []) {

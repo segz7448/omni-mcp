@@ -1,6 +1,6 @@
 {
   "name": "omni-mcp-gateway",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local-first OpenAPI to MCP gateway. Bring your own credentials; no hosted control plane.",
   "type": "module",
   "license": "MIT",
@@ -25,16 +25,19 @@
     "scripts/verify-public.js",
     "generated/report.json",
     "SECURITY.md",
-    "omni.local.example.json"
+    "omni.local.example.json",
+    "defaults",
+    "scripts/build-default-connectors.js"
   ],
   "scripts": {
     "test": "node --test test/*.test.js",
-    "check": "node --check src/cli.js && node --check src/compiler.js && node --check src/engine.js",
+    "check": "node --check src/cli.js && node --check src/compiler.js && node --check src/engine.js && node --check src/server.js && node --check scripts/build-default-connectors.js && node --check scripts/verify-public.js",
     "generate": "node scripts/generate-batch.js",
-    "start": "node src/cli.js serve --config omni.config.json",
+    "start": "node src/cli.js serve",
     "catalog": "node src/cli.js catalog-sync",
     "catalog:report": "node scripts/catalog-report.js",
-    "verify:public": "node scripts/verify-public.js"
+    "verify:public": "node scripts/verify-public.js",
+    "build:defaults": "node scripts/build-default-connectors.js"
   },
   "dependencies": {
     "@modelcontextprotocol/client": "2.4.0",

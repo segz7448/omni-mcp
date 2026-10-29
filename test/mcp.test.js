@@ -24,3 +24,14 @@ test('actual stdio child process: initialize, tools/list, describe, HTTP call',a
  const result=parse(await client.callTool({name:'call_operation',arguments:{name:found.tools[0].name,arguments:{path:{id:'42'}}}}));assert.equal(result.data.realLocalHttp,true);assert.equal(result.data.path,'/items/42');
  const blocked=await client.callTool({name:'call_operation',arguments:{name:'demo__create',arguments:{body:{name:'blocked'}}}});assert.equal(blocked.isError,true);
 });
+test('default config starts from package root with bundled anonymous operations',async t=>{
+ const root=path.resolve('.');
+ const transport=new StdioClientTransport({command:process.execPath,args:[path.resolve('src/cli.js'),'serve'],cwd:root,stderr:'pipe'});
+ const client=new Client({name:'omni-default-config-test',version:'1.0.0'});t.after(()=>client.close());
+ await client.connect(transport);
+ const listed=await client.listTools();assert.equal(listed.tools.length,4);
+ const parse=r=>JSON.parse(r.content[0].text);
+ const platforms=parse(await client.callTool({name:'platforms',arguments:{}}));
+ assert.deepEqual(platforms.map(p=>p.id).sort(),['exchange-rates','github','wikimedia']);
+ for(const id of ['github','wikimedia','exchange-rates']) assert.ok(platforms.find(p=>p.id===id).enabled>0);
+});

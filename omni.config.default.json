@@ -1,4 +1,8 @@
 {
-  "platforms": [],
+  "platforms": [
+    { "compiled": "defaults/github-public.json" },
+    { "compiled": "defaults/wikimedia-public.json" },
+    { "compiled": "defaults/exchange-rates-public.json" }
+  ],
   "upstreams": []
 }

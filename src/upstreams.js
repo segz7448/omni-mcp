@@ -15,7 +15,7 @@ export async function connectUpstreams(configs = []) {
       const transport=new StdioClientTransport({command:config.command,args:config.args || [],env,stderr:'pipe'});
       // Upstream stderr is deliberately not forwarded: third-party programs may log secrets.
       transport.stderr?.resume();
-      const client=new Client({name:'omni-mcp-upstream',version:'0.1.0'});
+      const client=new Client({name:'omni-mcp-upstream',version:'0.1.1'});
       const entry={client,id:'local_'+config.id,tools:[]};connected.push(entry);
       await client.connect(transport);
       let cursor;let pages=0;

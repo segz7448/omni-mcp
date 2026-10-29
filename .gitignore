@@ -8,3 +8,5 @@ catalog.json
 generated/*.json
 !generated/report.json
 coverage/
+
+defaults/*.json

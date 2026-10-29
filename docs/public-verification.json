@@ -1,5 +1,19 @@
 {
-  "checkedAt": "2026-10-29T13:38:11.719Z",
+  "checkedAt": "2026-10-29T15:37:58.647Z",
+  "defaultConfigPlatforms": [
+    {
+      "id": "github",
+      "enabled": 1
+    },
+    {
+      "id": "wikimedia",
+      "enabled": 1
+    },
+    {
+      "id": "exchange-rates",
+      "enabled": 1
+    }
+  ],
   "results": [
     {
       "provider": "github",
@@ -7,15 +21,7 @@
       "status": 200,
       "passed": true,
       "authenticated": false,
-      "scope": "One anonymous read endpoint, not whole-provider certification"
-    },
-    {
-      "provider": "exchange-rates",
-      "operation": "exchange-rates__get__latest__base_currency_",
-      "status": 200,
-      "passed": true,
-      "authenticated": false,
-      "scope": "One anonymous read endpoint, not whole-provider certification"
+      "scope": "One anonymous operation executed via the default-config MCP server; not whole-provider certification"
     },
     {
       "provider": "wikimedia",
@@ -23,13 +29,15 @@
       "status": 200,
       "passed": true,
       "authenticated": false,
-      "scope": "One anonymous read endpoint, not whole-provider certification"
+      "scope": "One anonymous operation executed via the default-config MCP server; not whole-provider certification"
     },
     {
-      "provider": "twitter",
-      "passed": false,
+      "provider": "exchange-rates",
+      "operation": "exchange-rates__get__latest__base_currency_",
+      "status": 200,
+      "passed": true,
       "authenticated": false,
-      "error": "HTTP request failed or was blocked by network policy"
+      "scope": "One anonymous operation executed via the default-config MCP server; not whole-provider certification"
     }
   ]
 }
