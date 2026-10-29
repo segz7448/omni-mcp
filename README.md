@@ -28,7 +28,15 @@ A bundled `catalog/candidates.json` snapshot provides all 2,529 categorized disc
 
 Full source counts: [catalog report](docs/catalog-report.json). These are **not free verified integration counts**. No pricing audit has been completed. Default configuration (`omni.config.default.json`) is empty: it activates zero providers and zero device connectors. The 17 spec-generation presets are opt-in compatibility samples, not a free-services recommendation. A free adapter cannot remove bank/payment charges or commercial API costs.
 
-There are two connector classes in one gateway: generated HTTP operations and explicitly allowlisted local stdio MCP servers. [Local connector guide](docs/LOCAL-SERVERS.md) explains the security boundary. Two open-source candidates (Playwright/browser and filesystem) are listed in `local-servers.json`, disabled and untested. **No phone connector is implemented.** This does not yet fulfill the goal of thousands of verified free integrations; that requires continuing provider-by-provider checks.
+There are two connector classes in one gateway: generated HTTP operations and explicitly allowlisted local stdio MCP servers. [Local connector guide](docs/LOCAL-SERVERS.md) explains the security boundary. Reviewed references are listed in `local-servers.json`, disabled by default; filesystem and memory have isolated read-only proof tests, Playwright remains untested. **No phone connector is implemented.** This does not yet fulfill the goal of thousands of verified free integrations; that requires continuing provider-by-provider checks.
+
+## Community server candidates
+
+The separate community sweep found **4820 deduplicated upstream repositories**. Sources contributed: official 11, awesome 4623, smithery 2, glama 3, pulsemcp 4, mcp-so 4, npm 217, pypi 2. Source counts overlap. This is not an exhaustive directory crawl, and these are not installed, verified or free-certified integrations. See [sweep method and limits](docs/COMMUNITY-CATALOG.md) and [machine-readable summary](docs/community-report.json).
+
+Approximate community category counts: other 2157, developer_tools 577, pc_browser 138, cloud 156, database 155, messaging 184, pc_files 58, memory 376, search 343, finance 492, social 75, productivity 140, banking 2, payments 1. Categories overlap and are derived from source headings/keywords, not a provider audit. These are separate from the API-definition counts above; do not add them together as an integration total.
+
+The gateway actually tested two external reference servers: filesystem 2.1.0 and memory 2.0.1, using Node 24 and only temporary, read-only fixtures. [Evidence](docs/local-verification.json), [opt-in configuration](omni.local.example.json). They are not bundled runtime dependencies or enabled defaults. Older GitHub/Postgres/Puppeteer/SQLite reference servers are archived, not presented as current maintained choices.
 
 ## Run from source
 

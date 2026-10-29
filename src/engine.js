@@ -1,8 +1,10 @@
 import Ajv from 'ajv';
+import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import {request} from './http.js';
 const ajv = new Ajv({strict: false, unicodeRegExp: false, allErrors: false, validateFormats: true});
 addFormats(ajv);
+const ajv2020 = new Ajv2020({strict:false,unicodeRegExp:false,allErrors:false});addFormats(ajv2020);
 const blockedHeaders = /^(host|connection|content-length|transfer-encoding|cookie|authorization|proxy-.*)$/i;
 function envValue(name) {
   if (!/^[A-Z_][A-Z0-9_]*$/.test(name || '')) throw new Error('Invalid credential environment variable name');
@@ -36,7 +38,7 @@ export class Engine {
     const x = this.tools.get(name);
     if (!x || !this.enabled(x.t,x.p)) throw new Error('Unknown or disabled operation');
     const {t,p} = x;
-    if (!this.validators.has(name)) this.validators.set(name, ajv.compile(t.inputSchema));
+    if (!this.validators.has(name)) this.validators.set(name, (t.inputSchema.$schema?.includes('2020-12') ? ajv2020 : ajv).compile(t.inputSchema));
     if (!this.validators.get(name)(args)) throw new Error('Arguments do not match the operation input schema');
     if (p.upstream) {
       const result = await p.upstream.client.callTool({name:t.upstreamTool,arguments:args});

@@ -1,0 +1,38 @@
+{
+  "fetchedAt": "2026-10-29",
+  "method": "Public directory snapshots plus at most four detail pages per HTML directory, npm first 250 keyword results, four targeted PyPI records; not exhaustive.",
+  "sourceCounts": {
+    "official": 11,
+    "awesome": 4623,
+    "smithery": 2,
+    "glama": 3,
+    "pulsemcp": 4,
+    "mcp-so": 4,
+    "npm": 217,
+    "pypi": 2
+  },
+  "deduplicatedRepositories": 4820,
+  "categoryCounts": {
+    "other": 2157,
+    "developer_tools": 577,
+    "pc_browser": 138,
+    "cloud": 156,
+    "database": 155,
+    "messaging": 184,
+    "pc_files": 58,
+    "memory": 376,
+    "search": 343,
+    "finance": 492,
+    "social": 75,
+    "productivity": 140,
+    "banking": 2,
+    "payments": 1
+  },
+  "limitations": [
+    "Community README entries are discovery candidates, not independently curated or audited connectors.",
+    "Dedupe by repository intentionally collapses monorepo subservers and does not identify forks.",
+    "HTML directories were sampled, not exhaustively crawled.",
+    "PyPI search returned a browser challenge; only four direct project JSON lookups were used.",
+    "Source listing text does not grant permission, verify free access or establish package safety."
+  ]
+}

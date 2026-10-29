@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-29T13:40:44.092Z",
+  "nodeVersion": "24 (external runtime)",
+  "packages": {
+    "filesystem": "2.1.0",
+    "memory": "2.0.1"
+  },
+  "results": [
+    {
+      "id": "filesystem",
+      "passed": true,
+      "scope": "Allowlisted read of temporary fixture; outside directory denied; no writes enabled."
+    },
+    {
+      "id": "memory",
+      "passed": true,
+      "scope": "Allowlisted empty temporary graph read; no persistent user data or mutation."
+    }
+  ],
+  "note": "Reference packages installed separately for opt-in verification, not gateway runtime dependencies. Node 24 required by these pinned releases."
+}

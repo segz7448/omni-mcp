@@ -5,7 +5,12 @@
       "id": "playwright",
       "category": "pc_browser",
       "source": "https://github.com/microsoft/playwright-mcp",
-      "commandTemplate": {"command": "npx", "args": ["@playwright/mcp@REVIEWED_VERSION"]},
+      "commandTemplate": {
+        "command": "npx",
+        "args": [
+          "@playwright/mcp@REVIEWED_VERSION"
+        ]
+      },
       "adapterPricing": "open_source",
       "liveTested": false,
       "enabledByDefault": false,
@@ -15,11 +20,32 @@
       "id": "filesystem",
       "category": "pc_files",
       "source": "https://github.com/modelcontextprotocol/servers",
-      "commandTemplate": {"command": "npx", "args": ["@modelcontextprotocol/server-filesystem@REVIEWED_VERSION", "/EXPLICIT/ALLOWED/DIRECTORY"]},
+      "commandTemplate": {
+        "command": "npx",
+        "args": [
+          "@modelcontextprotocol/server-filesystem@REVIEWED_VERSION",
+          "/EXPLICIT/ALLOWED/DIRECTORY"
+        ]
+      },
       "adapterPricing": "open_source",
-      "liveTested": false,
+      "liveTested": true,
       "enabledByDefault": false,
-      "warning": "Only configure explicit non-sensitive directories and an exact read-tool allowlist."
+      "warning": "Only configure explicit non-sensitive directories and an exact read-tool allowlist.",
+      "installStatus": "installed_for_isolated_test_only",
+      "testedVersion": "2.1.0",
+      "requiredNode": ">=24"
+    },
+    {
+      "id": "memory",
+      "category": "memory",
+      "source": "https://github.com/modelcontextprotocol/servers",
+      "adapterPricing": "open_source",
+      "liveTested": true,
+      "testedVersion": "2.0.1",
+      "requiredNode": ">=24",
+      "enabledByDefault": false,
+      "installStatus": "installed_for_isolated_test_only",
+      "warning": "Read-only empty temporary graph verified; no persistent user graph access."
     }
   ]
 }

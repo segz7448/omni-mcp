@@ -1,0 +1,19 @@
+{
+  "platforms": [],
+  "upstreams": [
+    {
+      "id": "filesystem",
+      "command": "/ABSOLUTE/PATH/TO/NODE24",
+      "args": ["/REVIEWED/PREFIX/node_modules/@modelcontextprotocol/server-filesystem/dist/index.js", "/EXPLICIT/ALLOWED/DIRECTORY"],
+      "allowTools": ["read_text_file", "list_directory", "list_allowed_directories"],
+      "inheritEnv": []
+    },
+    {
+      "id": "memory",
+      "command": "/ABSOLUTE/PATH/TO/NODE24",
+      "args": ["/REVIEWED/PREFIX/node_modules/@modelcontextprotocol/server-memory/dist/index.js"],
+      "allowTools": ["read_graph", "search_nodes"],
+      "inheritEnv": ["MEMORY_FILE_PATH"]
+    }
+  ]
+}

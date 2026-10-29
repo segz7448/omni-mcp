@@ -24,7 +24,8 @@
     "scripts/catalog-report.js",
     "scripts/verify-public.js",
     "generated/report.json",
-    "SECURITY.md"
+    "SECURITY.md",
+    "omni.local.example.json"
   ],
   "scripts": {
     "test": "node --test test/*.test.js",
