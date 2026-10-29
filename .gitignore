@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+omni.config.json
+catalog.json
+*.tgz
+generated/*.json
+!generated/report.json
+coverage/

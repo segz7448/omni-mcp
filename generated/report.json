@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-10-29T13:31:10.959Z",
+  "platforms": [
+    {
+      "id": "github",
+      "source": "https://api.apis.guru/v2/specs/github.com/1.1.4/openapi.json",
+      "catalogId": "github.com",
+      "specVersion": "1.1.4",
+      "sha256": "efebc34c41a39d98ed218e09590e14281a3549fa3ca8bc14361eb81fb52cbe44",
+      "generated": 837,
+      "readMethods": 441,
+      "skipped": 8,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "stripe",
+      "source": "https://api.apis.guru/v2/specs/stripe.com/2022-11-15/openapi.json",
+      "catalogId": "stripe.com",
+      "specVersion": "2022-11-15",
+      "sha256": "76e10a2395402ad46f157a39a6bfc6b2843e07251d769fdfbe7042b749d881f2",
+      "generated": 235,
+      "readMethods": 0,
+      "skipped": 211,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "slack",
+      "source": "https://api.apis.guru/v2/specs/slack.com/1.7.0/openapi.json",
+      "catalogId": "slack.com",
+      "specVersion": "1.7.0",
+      "sha256": "a623a38a3be7e3b6bc47e74401b509d4e044025b4ce8eefe611034c7bca1077a",
+      "generated": 174,
+      "readMethods": 80,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "notion",
+      "source": "https://api.apis.guru/v2/specs/notion.com/1.0.0/openapi.json",
+      "catalogId": "notion.com",
+      "specVersion": "1.0.0",
+      "sha256": "6df5889eac35a3f4eb99115eac7dd9b28b9d6040c664a742368ef7b68d45d983",
+      "generated": 13,
+      "readMethods": 7,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "digitalocean",
+      "source": "https://api.apis.guru/v2/specs/digitalocean.com/2.0/openapi.json",
+      "catalogId": "digitalocean.com",
+      "specVersion": "2.0",
+      "sha256": "21c7fd1ddfb7476410fe75934acb74be59e0747b27361a0e67da7f396ef861c5",
+      "generated": 86,
+      "readMethods": 74,
+      "skipped": 204,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "sendgrid",
+      "source": "https://api.apis.guru/v2/specs/sendgrid.com/1.0.0/openapi.json",
+      "catalogId": "sendgrid.com",
+      "specVersion": "1.0.0",
+      "sha256": "80aaf7926007ffa486bf9d2d5d8b1337ec8a361d465a0f17dbe784258f8b2a1f",
+      "generated": 334,
+      "readMethods": 154,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "spotify",
+      "source": "https://api.apis.guru/v2/specs/spotify.com/1.0.0/openapi.json",
+      "catalogId": "spotify.com",
+      "specVersion": "1.0.0",
+      "sha256": "3a652300be23d23f2efc67b03738851be4f99949b05f0fc7f465504dee075594",
+      "generated": 88,
+      "readMethods": 58,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "zoom",
+      "source": "https://api.apis.guru/v2/specs/zoom.us/2.0.0/openapi.json",
+      "catalogId": "zoom.us",
+      "specVersion": "2.0.0",
+      "sha256": "cdfd27047bb0e4f7038135605d9aa4e72eeb17d86f2195b5f92f09f76191ce18",
+      "generated": 369,
+      "readMethods": 173,
+      "skipped": 4,
+      "liveAuthenticatedTested": false
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "omni-mcp-local",
+  "version": "0.1.0",
+  "description": "Local-first OpenAPI to MCP gateway. Bring your own credentials; no hosted control plane.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "omni-mcp": "src/cli.js"
+  },
+  "files": [
+    "src",
+    "presets.json",
+    "README.md",
+    "LICENSE",
+    "docs"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/cli.js && node --check src/compiler.js && node --check src/engine.js",
+    "generate": "node scripts/generate-batch.js",
+    "start": "node src/cli.js serve --config omni.config.json",
+    "catalog": "node src/cli.js catalog-sync"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.4.0",
+    "@modelcontextprotocol/core": "2.4.0",
+    "@modelcontextprotocol/server": "2.4.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "ipaddr.js": "2.3.0",
+    "yaml": "2.9.1"
+  }
+}

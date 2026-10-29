@@ -1,0 +1,26 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import http from 'node:http';
+import {Client} from '@modelcontextprotocol/client';
+import {StdioClientTransport} from '@modelcontextprotocol/client/stdio';
+import {compileSpec,packCompiled} from '../src/compiler.js';
+import {fixture} from './fixture.js';
+test('actual stdio child process: initialize, tools/list, describe, HTTP call',async t=>{
+ const dir=await fs.mkdtemp(path.join(os.tmpdir(),'omni-test-'));t.after(()=>fs.rm(dir,{recursive:true,force:true}));
+ const api=http.createServer((req,res)=>{res.setHeader('Content-Type','application/json');res.end(JSON.stringify({realLocalHttp:true,path:req.url}));});
+ await new Promise(r=>api.listen(0,'127.0.0.1',r));t.after(()=>api.close());
+ await fs.writeFile(path.join(dir,'demo.json'),JSON.stringify(packCompiled(compileSpec(fixture(`http://127.0.0.1:${api.address().port}`),{id:'demo'}))));
+ await fs.writeFile(path.join(dir,'config.json'),JSON.stringify({platforms:[{compiled:'demo.json',allowLocalhost:true}]}));
+ const transport=new StdioClientTransport({command:process.execPath,args:[path.resolve('src/cli.js'),'serve','--config',path.join(dir,'config.json')],stderr:'pipe'});
+ transport.stderr?.on('data', b=>process.stderr.write(b));
+ const client=new Client({name:'omni-test',version:'1.0.0'});t.after(()=>client.close());await client.connect(transport);
+ const list=await client.listTools();assert.equal(list.tools.length,4);
+ const parse=r=>JSON.parse(r.content[0].text);
+ const found=parse(await client.callTool({name:'search_operations',arguments:{query:'getItem'}}));assert.equal(found.total,1);
+ const described=parse(await client.callTool({name:'describe_operation',arguments:{name:found.tools[0].name}}));assert.equal(described.inputSchema.type,'object');
+ const result=parse(await client.callTool({name:'call_operation',arguments:{name:found.tools[0].name,arguments:{path:{id:'42'}}}}));assert.equal(result.data.realLocalHttp,true);assert.equal(result.data.path,'/items/42');
+ const blocked=await client.callTool({name:'call_operation',arguments:{name:'demo__create',arguments:{body:{name:'blocked'}}}});assert.equal(blocked.isError,true);
+});

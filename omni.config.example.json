@@ -1,0 +1,22 @@
+{
+  "platforms": [
+    {
+      "compiled": "generated/github.json",
+      "headers": {
+        "Authorization": {"env": "GITHUB_TOKEN", "prefix": "Bearer "},
+        "X-GitHub-Api-Version": "2022-11-28"
+      }
+    },
+    {
+      "compiled": "generated/stripe.json",
+      "auth": {"bearerAuth": {"env": "STRIPE_API_KEY"}}
+    },
+    {
+      "compiled": "generated/notion.json",
+      "headers": {
+        "Authorization": {"env": "NOTION_TOKEN", "prefix": "Bearer "},
+        "Notion-Version": "2022-06-28"
+      }
+    }
+  ]
+}

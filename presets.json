@@ -1,0 +1,43 @@
+[
+  {
+    "id": "github",
+    "catalogId": "github.com",
+    "specUrl": "https://api.apis.guru/v2/specs/github.com/1.1.4/openapi.json"
+  },
+  {
+    "id": "stripe",
+    "catalogId": "stripe.com",
+    "specUrl": "https://api.apis.guru/v2/specs/stripe.com/2022-11-15/openapi.json"
+  },
+  {
+    "id": "slack",
+    "catalogId": "slack.com",
+    "specUrl": "https://api.apis.guru/v2/specs/slack.com/1.7.0/openapi.json"
+  },
+  {
+    "id": "notion",
+    "catalogId": "notion.com",
+    "specUrl": "https://api.apis.guru/v2/specs/notion.com/1.0.0/openapi.json"
+  },
+  {
+    "id": "digitalocean",
+    "catalogId": "digitalocean.com",
+    "specUrl": "https://api.apis.guru/v2/specs/digitalocean.com/2.0/openapi.json"
+  },
+  {
+    "id": "sendgrid",
+    "catalogId": "sendgrid.com",
+    "specUrl": "https://api.apis.guru/v2/specs/sendgrid.com/1.0.0/openapi.json",
+    "baseUrl": "https://api.sendgrid.com/v3"
+  },
+  {
+    "id": "spotify",
+    "catalogId": "spotify.com",
+    "specUrl": "https://api.apis.guru/v2/specs/spotify.com/1.0.0/openapi.json"
+  },
+  {
+    "id": "zoom",
+    "catalogId": "zoom.us",
+    "specUrl": "https://api.apis.guru/v2/specs/zoom.us/2.0.0/openapi.json"
+  }
+]
