@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-29T13:38:11.719Z",
+  "results": [
+    {
+      "provider": "github",
+      "operation": "github__repos_get",
+      "status": 200,
+      "passed": true,
+      "authenticated": false,
+      "scope": "One anonymous read endpoint, not whole-provider certification"
+    },
+    {
+      "provider": "exchange-rates",
+      "operation": "exchange-rates__get__latest__base_currency_",
+      "status": 200,
+      "passed": true,
+      "authenticated": false,
+      "scope": "One anonymous read endpoint, not whole-provider certification"
+    },
+    {
+      "provider": "wikimedia",
+      "operation": "wikimedia__get__metrics_pageviews_aggregate__projec_ad01043a8292",
+      "status": 200,
+      "passed": true,
+      "authenticated": false,
+      "scope": "One anonymous read endpoint, not whole-provider certification"
+    },
+    {
+      "provider": "twitter",
+      "passed": false,
+      "authenticated": false,
+      "error": "HTTP request failed or was blocked by network policy"
+    }
+  ]
+}

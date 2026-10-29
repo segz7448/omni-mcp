@@ -19,7 +19,12 @@
     "omni.config.default.json",
     "omni.config.example.json",
     "local-servers.json",
-    "catalog"
+    "catalog",
+    "scripts/generate-batch.js",
+    "scripts/catalog-report.js",
+    "scripts/verify-public.js",
+    "generated/report.json",
+    "SECURITY.md"
   ],
   "scripts": {
     "test": "node --test test/*.test.js",
@@ -27,7 +32,8 @@
     "generate": "node scripts/generate-batch.js",
     "start": "node src/cli.js serve --config omni.config.json",
     "catalog": "node src/cli.js catalog-sync",
-    "catalog:report": "node scripts/catalog-report.js"
+    "catalog:report": "node scripts/catalog-report.js",
+    "verify:public": "node scripts/verify-public.js"
   },
   "dependencies": {
     "@modelcontextprotocol/client": "2.4.0",
@@ -36,6 +42,15 @@
     "ajv": "8.20.0",
     "ajv-formats": "3.0.1",
     "ipaddr.js": "2.3.0",
+    "swagger2openapi": "7.0.8",
     "yaml": "2.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/segz7448/omni-mcp.git"
+  },
+  "homepage": "https://github.com/segz7448/omni-mcp",
+  "bugs": {
+    "url": "https://github.com/segz7448/omni-mcp/issues"
   }
 }

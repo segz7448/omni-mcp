@@ -2,7 +2,7 @@
 
 A local-first OpenAPI-to-MCP gateway. One local process, your API credentials, no hosted control plane.
 
-**Early development, not 1,000 verified integrations.** The first batch generates operation schemas from eight public specs: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify and Zoom. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. One unauthenticated GitHub public-repository read returned HTTP 200 through the actual engine; see [smoke-test evidence](docs/live-smoke.json).
+**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 17 public specs: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia and ExchangeRate-API. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia and ExchangeRate-API. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
 
 The long-term goal is broad platform coverage without writing each connector by hand. APIs.guru's catalog returned 2,529 API entries when checked on October 29, 2026. Those are API definitions, not necessarily distinct companies, compatible APIs, or working integrations. No claim of 5,000 supported platforms is made.
 
@@ -26,7 +26,7 @@ The source catalog is categorized. Snapshot counts (entries can have several lab
 
 A bundled `catalog/candidates.json` snapshot provides all 2,529 categorized discovery candidates, with `pricingStatus: unverified` and `enabledByDefault: false` on every entry. It is metadata only, not activated connectors.
 
-Full source counts: [catalog report](docs/catalog-report.json). These are **not free verified integration counts**. No pricing audit has been completed. Default configuration (`omni.config.default.json`) is empty: it activates zero providers and zero device connectors. The eight spec-generation presets are opt-in compatibility samples, not a free-services recommendation. A free adapter cannot remove bank/payment charges or commercial API costs.
+Full source counts: [catalog report](docs/catalog-report.json). These are **not free verified integration counts**. No pricing audit has been completed. Default configuration (`omni.config.default.json`) is empty: it activates zero providers and zero device connectors. The 17 spec-generation presets are opt-in compatibility samples, not a free-services recommendation. A free adapter cannot remove bank/payment charges or commercial API costs.
 
 There are two connector classes in one gateway: generated HTTP operations and explicitly allowlisted local stdio MCP servers. [Local connector guide](docs/LOCAL-SERVERS.md) explains the security boundary. Two open-source candidates (Playwright/browser and filesystem) are listed in `local-servers.json`, disabled and untested. **No phone connector is implemented.** This does not yet fulfill the goal of thousands of verified free integrations; that requires continuing provider-by-provider checks.
 
@@ -62,7 +62,7 @@ Example client configuration (replace both absolute paths):
 
 Credentials must be available in that process's environment. Desktop clients do not always inherit terminal environment variables. Use your client's secret/environment settings. Never commit keys. No account, central token store, OAuth broker, or hosting subscription is required by this project. Provider fees and API quotas still apply.
 
-A registry release has **not** been published. `npx omni-mcp` is not an installation instruction for this repo. `npm link` makes the local `omni-mcp` executable available for development. A reviewed npm release is future work.
+A registry release has **not** been published. `npx omni-mcp` is not an installation instruction for this repo. `npm link` makes the local `omni-mcp` executable available for development. A reviewed npm release is future work. See [publishing requirements](docs/PUBLISHING.md).
 
 ## Four MCP tools, many discoverable operations
 
@@ -92,7 +92,7 @@ node src/cli.js generate --spec ./bundled-openapi.yaml --id myapi --out ./genera
 # Optional: --base-url https://api.example.com/v1
 ```
 
-Add that compiled file to your local config. Import is an explicit user action, not an agent-accessible tool. Review every spec and destination before using it. The generator supports a subset of OpenAPI 3.0/3.1. Unsupported operations are skipped with reasons, not silently advertised as supported. See [compatibility](docs/COMPATIBILITY.md).
+Add that compiled file to your local config. Import is an explicit user action, not an agent-accessible tool. Review every spec and destination before using it. Swagger 2.0 is converted to OpenAPI 3.0 first with external-reference retrieval blocked. The compiler supports a subset of OpenAPI 3.0/3.1. Unsupported operations are skipped with reasons, not silently advertised as supported. See [compatibility](docs/COMPATIBILITY.md).
 
 Discover more definitions:
 
@@ -117,7 +117,7 @@ This saves catalog metadata only. It does not download or activate every API. Sp
 ```sh
 npm run check
 npm test
-npm run generate      # network access, refreshes eight specs and provenance report
+npm run generate      # network access, refreshes 17 specs and provenance report
 npm test              # additionally validates every generated operation schema
 npm audit
 ```
@@ -129,7 +129,7 @@ Generation counts, source URLs, source hashes, skipped counts and authenticated-
 ## Roadmap
 
 - Fresh official provider specs and provider-specific contract tests.
-- Swagger 2.0 conversion and wider parameter/media-type support.
+- Wider parameter/media-type support and modern replacements for old snapshots.
 - Explicit OAuth workflows, scoped credentials, token refresh and OS keychain support.
 - Verified provider manifests, license checks, regression CI and compatibility scorecards.
 - Reviewed npm release for `npx` installation.

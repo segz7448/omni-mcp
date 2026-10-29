@@ -10,4 +10,7 @@ Checked October 29, 2026.
 - Playwright MCP: https://github.com/microsoft/playwright-mcp . Candidate local browser connector, not phone access.
 - Reference servers: https://github.com/modelcontextprotocol/servers . Candidate local filesystem tools, with their own safety boundaries.
 
-Exact eight preset source URLs, checksums and versions are in generated/report.json. No authenticated vendor testing is claimed. Free adapter code does not prove free vendor API access. No bank, payment instrument, social account, PC or phone was accessed during this build.
+Exact preset source URLs, checksums and versions are in generated/report.json. No authenticated vendor testing is claimed. Free adapter code does not prove free vendor API access. No bank, payment instrument, social account, PC or phone was accessed during this build.
+
+Swagger converter source: https://github.com/Mermade/oas-kit . BSD-3-Clause converter pinned at 7.0.8.
+Free exchange endpoint policy: https://www.exchangerate-api.com/docs/free . Successful anonymous sample calls do not remove quotas or provider terms.

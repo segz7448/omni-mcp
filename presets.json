@@ -39,5 +39,97 @@
     "id": "zoom",
     "catalogId": "zoom.us",
     "specUrl": "https://api.apis.guru/v2/specs/zoom.us/2.0.0/openapi.json"
+  },
+  {
+    "id": "plaid",
+    "catalogId": "plaid.com",
+    "specUrl": "https://api.apis.guru/v2/specs/plaid.com/2020-09-14_1.334.0/openapi.json",
+    "categories": [
+      "financial"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "bunq",
+    "catalogId": "bunq.com",
+    "specUrl": "https://api.apis.guru/v2/specs/bunq.com/1.0/openapi.json",
+    "categories": [
+      "financial"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false,
+    "baseUrl": "https://public-api.sandbox.bunq.com/v1"
+  },
+  {
+    "id": "twitter",
+    "catalogId": "twitter.com:current",
+    "specUrl": "https://api.apis.guru/v2/specs/twitter.com/current/2.61/openapi.json",
+    "categories": [
+      "social"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "gitlab",
+    "catalogId": "gitlab.com",
+    "specUrl": "https://api.apis.guru/v2/specs/gitlab.com/v3/swagger.json",
+    "categories": [
+      "developer_tools"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "asana",
+    "catalogId": "asana.com",
+    "specUrl": "https://api.apis.guru/v2/specs/asana.com/1.0/openapi.json",
+    "categories": [
+      "developer_tools"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "trello",
+    "catalogId": "trello.com",
+    "specUrl": "https://api.apis.guru/v2/specs/trello.com/1.0/openapi.json",
+    "categories": [
+      "collaboration"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "bitbucket",
+    "catalogId": "bitbucket.org",
+    "specUrl": "https://api.apis.guru/v2/specs/bitbucket.org/2.0/openapi.json",
+    "categories": [
+      "developer_tools",
+      "collaboration"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "wikimedia",
+    "catalogId": "wikimedia.org",
+    "specUrl": "https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.json",
+    "categories": [
+      "media"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
+  },
+  {
+    "id": "exchange-rates",
+    "catalogId": "exchangerate-api.com",
+    "specUrl": "https://api.apis.guru/v2/specs/exchangerate-api.com/4/openapi.json",
+    "categories": [
+      "financial"
+    ],
+    "pricingStatus": "unverified",
+    "enabledByDefault": false
   }
 ]

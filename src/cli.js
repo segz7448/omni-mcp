@@ -6,6 +6,7 @@ import {compileSpec, packCompiled, unpackCompiled} from './compiler.js';
 import {Engine} from './engine.js';
 import {serve} from './server.js';
 import {request} from './http.js';
+import {normalizeSpec} from './normalize.js';
 import {connectUpstreams} from './upstreams.js';
 const args = process.argv.slice(2);
 const option = (name, fallback) => { const i=args.indexOf('--'+name);return i<0?fallback:args[i+1];};
@@ -17,11 +18,11 @@ async function readSpec(file) {
 try {
   switch(args[0]) {
     case 'generate': {
-      const spec = await readSpec(option('spec'));
+      const {doc:spec,conversion} = await normalizeSpec(await readSpec(option('spec')));
       const c = compileSpec(spec,{id:option('id'),baseUrl:option('base-url')});
       const out = option('out');await fs.mkdir(path.dirname(out),{recursive:true});
       await fs.writeFile(out,JSON.stringify(packCompiled(c))+'\n');
-      console.error(JSON.stringify({id:c.id,generated:c.tools.length,skipped:c.skipped.length,out}));break;
+      console.error(JSON.stringify({id:c.id,generated:c.tools.length,skipped:c.skipped.length,conversion,out}));break;
     }
     case 'serve': {
       const file = path.resolve(option('config','omni.config.json'));
