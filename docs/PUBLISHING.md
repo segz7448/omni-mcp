@@ -16,3 +16,5 @@ Already checked locally: package tarball generation/installation, CLI startup, l
 Official references:
 - https://docs.npmjs.com/cli/v11/commands/npm-publish
 - https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification
+
+Release choice updated: omni-mcp-gateway@0.1.0, public tag latest. npm rejected omni-mcp for similarity to omnimcp. Registry absence alone did not establish eligibility.

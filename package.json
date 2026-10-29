@@ -1,5 +1,5 @@
 {
-  "name": "omni-mcp",
+  "name": "omni-mcp-gateway",
   "version": "0.1.0",
   "description": "Local-first OpenAPI to MCP gateway. Bring your own credentials; no hosted control plane.",
   "type": "module",
