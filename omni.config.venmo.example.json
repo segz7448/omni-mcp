@@ -1,0 +1,9 @@
+{
+  "platforms": [
+    {
+      "compiled": "connectors/venmo.json",
+      "auth": {"Oauth2": {"env": "PAYPAL_ACCESS_TOKEN"}},
+      "allowWriteOperations": []
+    }
+  ]
+}

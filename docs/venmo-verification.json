@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-10-29T21:11:17.079Z",
+  "target": "https://api-m.sandbox.paypal.com",
+  "note": "Unauthenticated probe only. No payment, order or token was created.",
+  "results": {
+    "create_order_invalid_token": {
+      "status": 401,
+      "error": "invalid_token"
+    },
+    "get_order_invalid_token": {
+      "status": 401,
+      "error": "invalid_token"
+    },
+    "paypal_token_invalid_client": {
+      "message": "PayPal token request failed: HTTP 401 invalid_client"
+    }
+  },
+  "ok": true
+}

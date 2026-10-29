@@ -34,7 +34,7 @@ function schema(v) {
   if (v.nullable) return {anyOf: [out, {type: 'null'}]};
   return out;
 }
-function reachableDefs(root, defs) {
+export function reachableDefs(root, defs) {
   const out = {}; const seen = new Set();
   const walk = v => {
     if (!v || typeof v !== 'object') return;

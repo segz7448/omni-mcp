@@ -44,7 +44,7 @@ export class Engine {
       const result = await p.upstream.client.callTool({name:t.upstreamTool,arguments:args});
       return {ok:result.isError !== true,data:result};
     }
-    const headers = {Accept: 'application/json', 'User-Agent': 'omni-mcp/0.1.1'};
+    const headers = {Accept: 'application/json', 'User-Agent': 'omni-mcp/0.1.2'};
     const secrets = [];
     let path = t.path;
     for (const b of t.bindings.filter(b => b.in === 'path')) {

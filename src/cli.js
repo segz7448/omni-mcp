@@ -40,6 +40,18 @@ try {
       process.once('SIGINT',close);process.once('SIGTERM',close);process.stdin.once('end',close);
       await serve(new Engine(platforms,upstreams));break;
     }
+    case 'paypal-token': {
+      // Exchange your own PayPal REST client id/secret for a short-lived access token.
+      // Prints only the token on stdout so it can be exported for the gateway process:
+      //   export PAYPAL_ACCESS_TOKEN="$(PAYPAL_CLIENT_ID=... PAYPAL_CLIENT_SECRET=... omni-mcp paypal-token)"
+      const base=option('base-url','https://api-m.sandbox.paypal.com');
+      const id=process.env.PAYPAL_CLIENT_ID,secret=process.env.PAYPAL_CLIENT_SECRET;
+      if(!id||!secret||/[\r\n:]/.test(id))throw new Error('Set PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET in the environment');
+      const r=await request(new URL('/v1/oauth2/token',base),{method:'POST',allowLocalhost:args.includes('--allow-localhost'),headers:{Accept:'application/json','Content-Type':'application/x-www-form-urlencoded',Authorization:'Basic '+Buffer.from(`${id}:${secret}`).toString('base64')},body:'grant_type=client_credentials'});
+      let data={};try{data=JSON.parse(r.text);}catch{}
+      if(r.status!==200||typeof data.access_token!=='string')throw new Error(`PayPal token request failed: HTTP ${r.status}${typeof data.error==='string'?' '+data.error.replace(/[^\w .-]/g,''):''}`);
+      process.stdout.write(data.access_token+'\n');break;
+    }
     case 'catalog-sync': {
       const url='https://api.apis.guru/v2/list.json';
       const r=await request(url,{maxBytes:32*1024*1024});if(r.status!==200)throw new Error(`Catalog HTTP ${r.status}`);
@@ -47,6 +59,6 @@ try {
       const entries=Object.entries(raw).map(([id,v])=>({id,title:v.versions[v.preferred].info.title,specUrl:v.versions[v.preferred].swaggerUrl,version:v.preferred,categories:(()=>{const c=v.versions[v.preferred].info['x-apisguru-categories'];return Array.isArray(c)?c:(typeof c==='string'?[c]:['uncategorized']);})(),pricingStatus:'unverified',enabledByDefault:false}));
       const out=option('out','catalog.json');await fs.writeFile(out,JSON.stringify({source:url,fetchedAt:new Date().toISOString(),entries},null,2)+'\n');console.error(`${entries.length} catalog entries saved to ${out}; not verified integrations`);break;
     }
-    default: console.error('omni-mcp generate --spec FILE --id ID --out FILE [--base-url URL]\nomni-mcp serve --config FILE\nomni-mcp catalog-sync [--out FILE]'); if(args[0])process.exitCode=1;
+    default: console.error('omni-mcp generate --spec FILE --id ID --out FILE [--base-url URL]\nomni-mcp serve --config FILE\nomni-mcp paypal-token [--base-url URL]\nomni-mcp catalog-sync [--out FILE]'); if(args[0])process.exitCode=1;
   }
 } catch(e) {console.error(e.message);process.exitCode=1;}

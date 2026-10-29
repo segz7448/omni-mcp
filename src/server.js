@@ -3,7 +3,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/server/stdio';
 const object = (properties, required = []) => ({type:'object', properties, required, additionalProperties:false});
 const string = {type:'string'};
 export function makeServer(engine) {
-  const server = new Server({name:'omni-mcp', version:'0.1.1'}, {capabilities:{tools:{}}});
+  const server = new Server({name:'omni-mcp', version:'0.1.2'}, {capabilities:{tools:{}}});
   const tools = [
     {name:'platforms',description:'List configured platforms and generation counts. This does not prove live API access.',inputSchema:object({})},
     {name:'search_operations',description:'Find enabled operations. Use describe_operation before calling.',inputSchema:object({query:string, platform:string, offset:{type:'integer',minimum:0}, limit:{type:'integer',minimum:1,maximum:50}})},

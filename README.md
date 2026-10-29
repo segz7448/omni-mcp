@@ -2,7 +2,7 @@
 
 A local-first OpenAPI-to-MCP gateway. One local process, your API credentials, no hosted control plane.
 
-**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 30 spec manifests across 19 provider families: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia and ExchangeRate-API, plus official PayPal and Square specs. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia and ExchangeRate-API only. PayPal and Square were not live-tested. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
+**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 30 spec manifests across 19 provider families: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia and ExchangeRate-API, plus official PayPal and Square specs. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia and ExchangeRate-API only. PayPal and Square generated adapters were not live-tested; the Venmo connector (below) was only probed with an invalid credential. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
 
 The long-term goal is broad platform coverage without writing each connector by hand. APIs.guru's catalog returned 2,529 API entries when checked on October 29, 2026. Those are API definitions, not necessarily distinct companies, compatible APIs, or working integrations. No claim of 5,000 supported platforms is made.
 
@@ -40,7 +40,7 @@ The gateway actually tested two external reference servers: filesystem 2.1.0 and
 
 ## Payments scope
 
-Official PayPal and Square specs are included as **sandbox-targeted, opt-in generated adapters**, not verified financial integrations. Venmo means PayPal Checkout merchant rails; Cash App Pay means Square Web Payments SDK tokenization plus Payments API. Neither provides consumer wallet/P2P access. Full frontend consent flows are not implemented, merchant approval/accounts may be required, and processing fees can apply. PayPal Invoicing is excluded for an unsupported regex dialect. [Exact boundaries and sources](docs/PAYMENT-RAILS.md), [payment-method metadata](catalog/payment-rails.json).
+Official PayPal and Square specs are included as **sandbox-targeted, opt-in generated adapters**, not verified financial integrations. Venmo has no public API of its own, so the [Venmo connector](docs/PAYMENT-RAILS.md#venmo-connector-paypal-checkout-rails) is 11 curated PayPal Orders v2 and Payments v2 operations (create order, confirm, authorize, capture, refund and status lookups) restricted to a Venmo payment source, running on official PayPal rails with your own PayPal credentials. Its requests are tested locally and the real PayPal sandbox rejected an invalid credential on both endpoints, but **no authenticated Venmo order, approval, capture or refund has been run**; payer approval in the Venmo app needs the PayPal JavaScript SDK frontend, which is not included, and Braintree is not implemented. Cash App Pay means Square Web Payments SDK tokenization plus Payments API. Neither provides consumer wallet/P2P access. Full frontend consent flows are not implemented, merchant approval/accounts may be required, and processing fees can apply. PayPal Invoicing is excluded for an unsupported regex dialect. [Exact boundaries and sources](docs/PAYMENT-RAILS.md), [payment-method metadata](catalog/payment-rails.json).
 
 ## Run from source
 
@@ -74,10 +74,10 @@ Example client configuration (replace both absolute paths):
 
 Credentials must be available in that process's environment. Desktop clients do not always inherit terminal environment variables. Use your client's secret/environment settings. Never commit keys. No account, central token store, OAuth broker, or hosting subscription is required by this project. Provider fees and API quotas still apply.
 
-The public release is [omni-mcp-gateway@0.1.1](https://www.npmjs.com/package/omni-mcp-gateway). To start immediately with three bundled public read-only operations and no API keys:
+The public release is [omni-mcp-gateway@0.1.2](https://www.npmjs.com/package/omni-mcp-gateway). To start immediately with three bundled public read-only operations and no API keys:
 
 ```sh
-npx --yes omni-mcp-gateway@0.1.1 serve
+npx --yes omni-mcp-gateway@0.1.2 serve
 ```
 
 The default config bundles only the anonymous GitHub repository lookup, Wikimedia pageview query and ExchangeRate-API latest-rates operation. Each is called through the gateway with no credentials and returned HTTP 200 with expected data in the verification run recorded in [docs/public-verification.json](docs/public-verification.json). This is a one-operation smoke test per service, not whole-provider certification. Other generated presets require your own credentials and reviewed configuration; community candidates and local MCP servers are not bundled or enabled automatically. To use a custom config, pass `--config /absolute/path/omni.config.json`.
