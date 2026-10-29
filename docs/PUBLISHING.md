@@ -1,6 +1,6 @@
 # npm release readiness, not publication
 
-No package has been published. On October 29, 2026, the public npm registry returned E404 for both omni-mcp-local (the current package name) and omni-mcp. That means no currently retrievable package record, not ownership, name reservation or permission to publish. Names may become unavailable before release.
+Release status: omni-mcp-gateway@0.1.0 is publicly available and latest. The initial release entered npm staged processing before becoming visible; no second upload was needed. On October 29, 2026, the public npm registry returned E404 for both omni-mcp-local (the current package name) and omni-mcp. That means no currently retrievable package record, not ownership, name reservation or permission to publish. Names may become unavailable before release.
 
 Before publication:
 

@@ -1,0 +1,17 @@
+{
+  "package": "omni-mcp-gateway",
+  "version": "0.1.0",
+  "registry": "https://registry.npmjs.org/omni-mcp-gateway",
+  "packagePage": "https://www.npmjs.com/package/omni-mcp-gateway",
+  "tarball": "https://registry.npmjs.org/omni-mcp-gateway/-/omni-mcp-gateway-0.1.0.tgz",
+  "integrity": "sha512-7RhlVFIeGa+q8ZoEO7u118CnKeA4UoriRV4oJD0EeJI0kdNhp3uA1uujioibh9kht1B/wuu882M0IgaBvkiDqA==",
+  "integrityMatchesReviewedTarball": true,
+  "checkedAt": "2026-10-29T14:21:50Z",
+  "checks": [
+    "Clean public registry install",
+    "Fresh-cache npx startup from clean directory",
+    "Actual installed-package MCP initialize and four tools listed",
+    "Generated fixture manifest and executed real local HTTP GET returning expected data"
+  ],
+  "scope": "Local protocol/fixture proof only; not authenticated vendor testing."
+}

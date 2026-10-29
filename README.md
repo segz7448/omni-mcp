@@ -2,7 +2,7 @@
 
 A local-first OpenAPI-to-MCP gateway. One local process, your API credentials, no hosted control plane.
 
-**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 30 spec manifests across 19 provider families: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia ExchangeRate-API, plus official PayPal and Square specs. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia ExchangeRate-API, plus official PayPal and Square specs. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
+**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 30 spec manifests across 19 provider families: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia and ExchangeRate-API, plus official PayPal and Square specs. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia and ExchangeRate-API only. PayPal and Square were not live-tested. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
 
 The long-term goal is broad platform coverage without writing each connector by hand. APIs.guru's catalog returned 2,529 API entries when checked on October 29, 2026. Those are API definitions, not necessarily distinct companies, compatible APIs, or working integrations. No claim of 5,000 supported platforms is made.
 
@@ -74,7 +74,19 @@ Example client configuration (replace both absolute paths):
 
 Credentials must be available in that process's environment. Desktop clients do not always inherit terminal environment variables. Use your client's secret/environment settings. Never commit keys. No account, central token store, OAuth broker, or hosting subscription is required by this project. Provider fees and API quotas still apply.
 
-A registry release has **not yet** been published. The prepared release is `omni-mcp-gateway@0.1.0`. Do not use an unverified registry package with that name until publication is confirmed here. `npm link` makes the local `omni-mcp` executable available for development. See [publishing requirements](docs/PUBLISHING.md).
+The public release is [omni-mcp-gateway@0.1.0](https://www.npmjs.com/package/omni-mcp-gateway). Verified by clean registry install, fresh-cache npx, exact tarball integrity and a real MCP session on October 29, 2026.
+
+```sh
+npx --yes omni-mcp-gateway@0.1.0
+```
+
+Without arguments this prints CLI usage. To start a server, provide your reviewed local config:
+
+```sh
+npx --yes omni-mcp-gateway@0.1.0 serve --config /absolute/path/omni.config.json
+```
+
+This is one-command installation of the engine, not automatic activation/authentication of thousands of providers. Generate/import reviewed API manifests and configure credentials or upstreams first. No services are enabled by default. See [publishing requirements](docs/PUBLISHING.md).
 
 ## Four MCP tools, many discoverable operations
 
@@ -144,7 +156,7 @@ Generation counts, source URLs, source hashes, skipped counts and authenticated-
 - Wider parameter/media-type support and modern replacements for old snapshots.
 - Explicit OAuth workflows, scoped credentials, token refresh and OS keychain support.
 - Verified provider manifests, license checks, regression CI and compatibility scorecards.
-- Reviewed npm release for `npx` installation.
+- Further reviewed releases, installation guides and compatibility testing.
 - Optional stateless hosted transport, only after multi-user isolation and auth design.
 
 "Serverless" here means **no server you deploy**: your MCP client launches the local process. This is not a Cloudflare Worker or a deployed remote MCP service.
