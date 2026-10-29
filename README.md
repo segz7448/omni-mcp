@@ -74,7 +74,7 @@ Example client configuration (replace both absolute paths):
 
 Credentials must be available in that process's environment. Desktop clients do not always inherit terminal environment variables. Use your client's secret/environment settings. Never commit keys. No account, central token store, OAuth broker, or hosting subscription is required by this project. Provider fees and API quotas still apply.
 
-A registry release has **not** been published. `npx omni-mcp` is not an installation instruction for this repo. `npm link` makes the local `omni-mcp` executable available for development. A reviewed npm release is future work. See [publishing requirements](docs/PUBLISHING.md).
+A registry release has **not yet** been published. The prepared release is `omni-mcp@0.1.0`. Do not use an unverified registry package with that name until publication is confirmed here. `npm link` makes the local `omni-mcp` executable available for development. See [publishing requirements](docs/PUBLISHING.md).
 
 ## Four MCP tools, many discoverable operations
 

@@ -1,5 +1,5 @@
 {
-  "name": "omni-mcp-local",
+  "name": "omni-mcp",
   "version": "0.1.0",
   "description": "Local-first OpenAPI to MCP gateway. Bring your own credentials; no hosted control plane.",
   "type": "module",
@@ -53,5 +53,9 @@
   "homepage": "https://github.com/segz7448/omni-mcp",
   "bugs": {
     "url": "https://github.com/segz7448/omni-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
