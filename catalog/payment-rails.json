@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {"id":"paypal","kind":"official_generated_api_specs","specManifests":12,"source":"https://github.com/paypal/paypal-rest-api-specifications","environment":"sandbox","requires":"Merchant/developer setup, OAuth access token and applicable approval/scopes","pricingStatus":"merchant_terms_and_processing_fees","verificationStatus":"schemas_compiled_only","enabledByDefault":false},
+    {"id":"venmo","kind":"documented_payment_method","via":"PayPal Checkout Orders API and JavaScript SDK","source":"https://developer.paypal.com/docs/checkout/pay-with-venmo/","requires":"US merchant/consumer, USD, Venmo app and explicit payer authorization; complete frontend not implemented","verificationStatus":"documentation_only_no_end_to_end_test","enabledByDefault":false},
+    {"id":"square","kind":"official_generated_api_spec","specManifests":1,"source":"https://github.com/square/connect-api-specification","environment":"sandbox","requires":"Seller/developer setup, access token and applicable scopes","pricingStatus":"merchant_terms_and_processing_fees","verificationStatus":"schemas_compiled_only","enabledByDefault":false},
+    {"id":"cash-app-pay","kind":"documented_payment_method","via":"Square Web Payments SDK tokenization and Payments API","source":"https://developer.squareup.com/docs/payments-api/take-payments/cash-app-payments","requires":"US buyer/seller eligibility, app/location, access token, payer authorization; frontend not implemented","verificationStatus":"documentation_only_no_end_to_end_test","enabledByDefault":false}
+  ],
+  "excluded":[{"id":"paypal-invoicing-v2","reason":"Unsupported regex dialect in official spec; validation not bypassed"}],
+  "policy":"Official merchant rails only. No private consumer APIs, scraping, reverse engineering or unapproved money movement."
+}

@@ -2,7 +2,7 @@
 
 A local-first OpenAPI-to-MCP gateway. One local process, your API credentials, no hosted control plane.
 
-**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 17 public specs: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia and ExchangeRate-API. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia and ExchangeRate-API. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
+**Early development, not 1,000 verified integrations.** The current batch generates operation schemas from 30 spec manifests across 19 provider families: GitHub, Stripe, Slack, Notion, DigitalOcean, SendGrid, Spotify, Zoom, Plaid, bunq, Twitter, GitLab, Asana, Trello, Bitbucket, Wikimedia ExchangeRate-API, plus official PayPal and Square specs. Some specs are old or incomplete. Generated does not mean live-tested. No authenticated vendor calls have been tested. Anonymous sample calls through the actual engine returned HTTP 200 with expected data for GitHub, Wikimedia ExchangeRate-API, plus official PayPal and Square specs. Twitter spec retrieval failed. See [verification evidence](docs/public-verification.json).
 
 The long-term goal is broad platform coverage without writing each connector by hand. APIs.guru's catalog returned 2,529 API entries when checked on October 29, 2026. Those are API definitions, not necessarily distinct companies, compatible APIs, or working integrations. No claim of 5,000 supported platforms is made.
 
@@ -26,7 +26,7 @@ The source catalog is categorized. Snapshot counts (entries can have several lab
 
 A bundled `catalog/candidates.json` snapshot provides all 2,529 categorized discovery candidates, with `pricingStatus: unverified` and `enabledByDefault: false` on every entry. It is metadata only, not activated connectors.
 
-Full source counts: [catalog report](docs/catalog-report.json). These are **not free verified integration counts**. No pricing audit has been completed. Default configuration (`omni.config.default.json`) is empty: it activates zero providers and zero device connectors. The 17 spec-generation presets are opt-in compatibility samples, not a free-services recommendation. A free adapter cannot remove bank/payment charges or commercial API costs.
+Full source counts: [catalog report](docs/catalog-report.json). These are **not free verified integration counts**. No pricing audit has been completed. Default configuration (`omni.config.default.json`) is empty: it activates zero providers and zero device connectors. The 30 spec-generation presets are opt-in compatibility samples, not a free-services recommendation. A free adapter cannot remove bank/payment charges or commercial API costs.
 
 There are two connector classes in one gateway: generated HTTP operations and explicitly allowlisted local stdio MCP servers. [Local connector guide](docs/LOCAL-SERVERS.md) explains the security boundary. Reviewed references are listed in `local-servers.json`, disabled by default; filesystem and memory have isolated read-only proof tests, Playwright remains untested. **No phone connector is implemented.** This does not yet fulfill the goal of thousands of verified free integrations; that requires continuing provider-by-provider checks.
 
@@ -37,6 +37,10 @@ The separate community sweep found **4820 deduplicated upstream repositories**. 
 Approximate community category counts: other 2157, developer_tools 577, pc_browser 138, cloud 156, database 155, messaging 184, pc_files 58, memory 376, search 343, finance 492, social 75, productivity 140, banking 2, payments 1. Categories overlap and are derived from source headings/keywords, not a provider audit. These are separate from the API-definition counts above; do not add them together as an integration total.
 
 The gateway actually tested two external reference servers: filesystem 2.1.0 and memory 2.0.1, using Node 24 and only temporary, read-only fixtures. [Evidence](docs/local-verification.json), [opt-in configuration](omni.local.example.json). They are not bundled runtime dependencies or enabled defaults. Older GitHub/Postgres/Puppeteer/SQLite reference servers are archived, not presented as current maintained choices.
+
+## Payments scope
+
+Official PayPal and Square specs are included as **sandbox-targeted, opt-in generated adapters**, not verified financial integrations. Venmo means PayPal Checkout merchant rails; Cash App Pay means Square Web Payments SDK tokenization plus Payments API. Neither provides consumer wallet/P2P access. Full frontend consent flows are not implemented, merchant approval/accounts may be required, and processing fees can apply. PayPal Invoicing is excluded for an unsupported regex dialect. [Exact boundaries and sources](docs/PAYMENT-RAILS.md), [payment-method metadata](catalog/payment-rails.json).
 
 ## Run from source
 
@@ -125,12 +129,12 @@ This saves catalog metadata only. It does not download or activate every API. Sp
 ```sh
 npm run check
 npm test
-npm run generate      # network access, refreshes 17 specs and provenance report
+npm run generate      # network access, refreshes 30 specs and provenance report
 npm test              # additionally validates every generated operation schema
 npm audit
 ```
 
-Tests include an actual spawned stdio MCP server/client session, tool discovery, schema inspection, a call through the gateway to a real local HTTP fixture, auth injection/redaction, a real allowlisted local upstream stdio process, path/query encoding, JSON/form bodies, blocked mutations, network policy and redirect handling. **The HTTP fixture is not a live vendor integration. A separate live smoke test covers one unauthenticated GitHub read only.** Generated schema tests skip when generated files are absent.
+Tests include an actual spawned stdio MCP server/client session, tool discovery, schema inspection, a call through the gateway to a real local HTTP fixture, auth injection/redaction, a real allowlisted local upstream stdio process, path/query encoding, JSON/form bodies, blocked mutations, network policy and redirect handling. **The HTTP fixture is not a live vendor integration. Separate live smoke tests cover one public read each for GitHub, Wikimedia and ExchangeRate-API; Twitter spec retrieval failed.** Generated schema tests skip when generated files are absent.
 
 Generation counts, source URLs, source hashes, skipped counts and authenticated-test status are recorded in [generated/report.json](generated/report.json). Vendor-generated files are deliberately not committed or packaged. Run the generator to produce them locally, under the original sources' terms. Read the [architecture](docs/ARCHITECTURE.md), [compatibility notes](docs/COMPATIBILITY.md), [security notes](SECURITY.md), and [source notes](docs/SOURCES.md).
 

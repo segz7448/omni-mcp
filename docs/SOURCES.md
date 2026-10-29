@@ -14,3 +14,5 @@ Exact preset source URLs, checksums and versions are in generated/report.json. N
 
 Swagger converter source: https://github.com/Mermade/oas-kit . BSD-3-Clause converter pinned at 7.0.8.
 Free exchange endpoint policy: https://www.exchangerate-api.com/docs/free . Successful anonymous sample calls do not remove quotas or provider terms.
+
+Official merchant rails: https://github.com/paypal/paypal-rest-api-specifications ; https://github.com/square/connect-api-specification ; https://developer.paypal.com/docs/checkout/pay-with-venmo/ ; https://developer.squareup.com/docs/payments-api/take-payments/cash-app-payments . No consumer/private APIs used.

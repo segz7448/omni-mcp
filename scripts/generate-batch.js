@@ -18,7 +18,7 @@ for(const p of presets) {
   const {doc,conversion}=await normalizeSpec(source);
   const c=compileSpec(doc,{id:p.id,baseUrl:p.baseUrl});
   await fs.writeFile(path.join(root,'generated',p.id+'.json'),JSON.stringify(packCompiled(c))+'\n');
-  report.push({id:p.id,source:p.specUrl,catalogId:p.catalogId,specVersion:doc.info?.version,sourceFormat:source.swagger || source.openapi,conversion,categories:p.categories || [],pricingStatus:'unverified',enabledByDefault:false,sha256:createHash('sha256').update(bytes).digest('hex'),generated:c.tools.length,readMethods:c.tools.filter(t=>['GET','HEAD'].includes(t.method)).length,skipped:c.skipped.length,liveAuthenticatedTested:false});
+  report.push({id:p.id,source:p.specUrl,catalogId:p.catalogId,specVersion:doc.info?.version,sourceFormat:source.swagger || source.openapi,conversion,categories:p.categories || [],pricingStatus:p.pricingStatus || 'unverified',enabledByDefault:false,sha256:createHash('sha256').update(bytes).digest('hex'),generated:c.tools.length,readMethods:c.tools.filter(t=>['GET','HEAD'].includes(t.method)).length,skipped:c.skipped.length,liveAuthenticatedTested:false});
   console.log(p.id,c.tools.length,'generated;',c.skipped.length,'skipped');
 }
 await fs.writeFile(path.join(root,'generated/report.json'),JSON.stringify({generatedAt:new Date().toISOString(),platforms:report},null,2)+'\n');

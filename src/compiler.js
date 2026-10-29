@@ -19,7 +19,10 @@ function schema(v) {
   const out = {};
   for (const [k, x] of Object.entries(v)) {
     if (['example', 'xml', 'discriminator', 'nullable'].includes(k) || k.startsWith('x-')) continue;
-    if (k === '$ref') {
+    if (k === 'pattern') {
+      try {new RegExp(x);}catch{throw new Error('Unsupported regular-expression dialect');}
+      out[k]=x;
+    } else if (k === '$ref') {
       if (!x.startsWith('#/components/schemas/')) throw new Error('Only bundled component schema references are supported');
       out[k] = x.replace('#/components/schemas/', '#/$defs/');
     } else if (k === 'exclusiveMinimum' && typeof x === 'boolean') {

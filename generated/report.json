@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-29T13:37:48.464Z",
+  "generatedAt": "2026-10-29T13:42:41.857Z",
   "platforms": [
     {
       "id": "github",
@@ -290,6 +290,227 @@
       "generated": 1,
       "readMethods": 1,
       "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-billing-subscriptions-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/billing_subscriptions_v1.json",
+      "specVersion": "1.8",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "ef9d5dd5d81fba9d951c2dba2d76cf958ab1cd9d0a2dc6b8415df7fac5829a8b",
+      "generated": 16,
+      "readMethods": 4,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-catalogs-products-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/catalogs_products_v1.json",
+      "specVersion": "1.0",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "32a729f6373cf2f2bf801ac577bb2cd87505959e5de543585cdfe7981b5ffb97",
+      "generated": 4,
+      "readMethods": 2,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-checkout-orders-v2",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/checkout_orders_v2.json",
+      "specVersion": "2.32",
+      "sourceFormat": "3.0.4",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "14db0b9e0d7440e38595b823724599edc7ab8b7a2b41ac442463e81b7d477fd6",
+      "generated": 9,
+      "readMethods": 1,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-customer-disputes-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/customer_disputes_v1.json",
+      "specVersion": "1.11",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "a72134c1a48d800f4da69d5c331b5b74ddde3eb71c97fc61c8e221f3aebf035f",
+      "generated": 9,
+      "readMethods": 2,
+      "skipped": 6,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-customer-partner-referrals-v2",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/customer_partner_referrals_v2.json",
+      "specVersion": "2.5",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "0556960b0d44afc0f021484d394e4602e1f77b7430b6af5cb726f3e274b25fac",
+      "generated": 2,
+      "readMethods": 1,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-notifications-webhooks-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/notifications_webhooks_v1.json",
+      "specVersion": "1.11",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "4702a4c2601a087cdde7481f1b55800abb568906e50dde867bb958b4b25afecf",
+      "generated": 16,
+      "readMethods": 8,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-payment-experience-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/payment-experience_web_experience_profiles_v1.json",
+      "specVersion": "1.3",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "51b0bd6bab29279f86684e446b2152a7ace62583f47ef8106da1ad6172f30a3f",
+      "generated": 6,
+      "readMethods": 2,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-payments-payment-v2",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/payments_payment_v2.json",
+      "specVersion": "2.12",
+      "sourceFormat": "3.0.4",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "ecd8bc60e133bd4bc54de10daae3011a451e3a69e971ddf19c09213aa0f15c21",
+      "generated": 8,
+      "readMethods": 3,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-payments-payouts-batch-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/payments_payouts_batch_v1.json",
+      "specVersion": "1.9",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "2a86549e2e7e42e9f082d9e43051fe55b83ef19dea1f76cff549377756374cc0",
+      "generated": 4,
+      "readMethods": 2,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-reporting-transactions-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/reporting_transactions_v1.json",
+      "specVersion": "1.9",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "40f2af0c02c204dde9227b14a6f9f91c2a6cc4222fe2c7c20983c6bc6f9e52b4",
+      "generated": 2,
+      "readMethods": 2,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-shipping-shipment-tracking-v1",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/shipping_shipment_tracking_v1.json",
+      "specVersion": "1.9",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "837c6db98ebcb6599b463b6f75233aad84221bd644e6bc67a761906c68d26cfb",
+      "generated": 5,
+      "readMethods": 2,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "paypal-vault-payment-tokens-v3",
+      "source": "https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/90e8041ffe02d80c452d2b476bedd59a8d219bdc/openapi/vault_payment_tokens_v3.json",
+      "specVersion": "3.4",
+      "sourceFormat": "3.0.3",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "acac6fb026868e361a967d4106b7ca39da41f1751ebe205e1df8365f559aa3d3",
+      "generated": 6,
+      "readMethods": 3,
+      "skipped": 0,
+      "liveAuthenticatedTested": false
+    },
+    {
+      "id": "square",
+      "source": "https://raw.githubusercontent.com/square/connect-api-specification/0689c901bdfe1ff73f47aa28b17ccd6e0c40bf2d/api.json",
+      "specVersion": "2.0",
+      "sourceFormat": "3.0.0",
+      "conversion": "none",
+      "categories": [
+        "payment"
+      ],
+      "pricingStatus": "merchant_terms_and_processing_fees",
+      "enabledByDefault": false,
+      "sha256": "8f65460732e19d7445f7a34d8a9df09163db45273df5176a1cc794890ef591fb",
+      "generated": 325,
+      "readMethods": 121,
+      "skipped": 7,
       "liveAuthenticatedTested": false
     }
   ]

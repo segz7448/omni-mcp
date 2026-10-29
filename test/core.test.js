@@ -59,3 +59,7 @@ test('bounded discovery and lazy validation',async t=>{
  const {engine}=await setup(t);assert.equal(engine.list('',undefined,0,1).tools.length,1);assert.equal(engine.validators.size,0);
  assert.equal(engine.list('getItem').total,1);assert.throws(()=>engine.describe('missing'),/Unknown/);
 });
+test('unsupported regex dialect rejects rather than weakening validation',()=>{
+ const doc=fixture();doc.paths['/bad']={get:{parameters:[{in:'query',name:'x',schema:{type:'string',pattern:'(?i)^test$'}}]}};
+ const c=compileSpec(doc,{id:'x'});assert.equal(c.skipped.length,1);assert.match(c.skipped[0].reason,/regular-expression/);
+});
